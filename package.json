@@ -1,0 +1,25 @@
+{
+  "name": "assignment_4_staffoverworked",
+  "version": "1.0.0",
+  "description": "### 개발 커뮤니티 서비스의 API 서버 만들기",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently 'tsc --watch --project tsconfig.json' 'node --watch dist/app.js' ",
+    "build": "tsc --project tsconfig.json",
+    "start": "node dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.19",
+    "concurrently": "^8.2.2"
+  }
+}
