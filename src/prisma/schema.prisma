@@ -10,13 +10,14 @@ datasource db {
 
 // Modeling
 model Users {
-  id        Int        @id @default(autoincrement())
-  email     String     @unique
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  posts     Posts[]
-  comments  Comments[]
-  likes     Likes[]
+  id                Int        @id @default(autoincrement())
+  email             String     @unique
+  encryptedPassword String
+  createdAt         DateTime   @default(now())
+  updatedAt         DateTime   @updatedAt
+  posts             Posts[]
+  comments          Comments[]
+  likes             Likes[]
 }
 
 model Forums {
