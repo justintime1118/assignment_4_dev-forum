@@ -29,7 +29,7 @@ model Forums {
 
 model Posts {
   id        Int        @id @default(autoincrement())
-  title     String
+  title     String     @default("unnamed title")
   content   String
   forum     Forums     @relation(fields: [forumId], references: [id])
   forumId   Int
@@ -43,7 +43,7 @@ model Posts {
 
 model Comments {
   id        Int      @id @default(autoincrement())
-  content   String
+  content   String   @default("comment")
   author    Users    @relation(fields: [authorId], references: [id])
   authorId  Int
   posts     Posts    @relation(fields: [postId], references: [id])
