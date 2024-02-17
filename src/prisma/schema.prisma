@@ -1,3 +1,4 @@
+// Configuration
 generator client {
   provider = "prisma-client-js"
 }
@@ -8,10 +9,9 @@ datasource db {
 }
 
 // Modeling
-
 model Users {
   id        Int        @id @default(autoincrement())
-  name      String
+  email     String     @unique
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   posts     Posts[]
@@ -21,7 +21,7 @@ model Users {
 
 model Forums {
   id        Int      @id @default(autoincrement())
-  name      String   @default("unnamed forum")
+  name      String   @unique
   posts     Posts[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -29,7 +29,7 @@ model Forums {
 
 model Posts {
   id        Int        @id @default(autoincrement())
-  title     String     @default("unnamed title")
+  title     String
   content   String
   forum     Forums     @relation(fields: [forumId], references: [id])
   forumId   Int
@@ -43,7 +43,7 @@ model Posts {
 
 model Comments {
   id        Int      @id @default(autoincrement())
-  content   String   @default("comment")
+  content   String
   author    Users    @relation(fields: [authorId], references: [id])
   authorId  Int
   posts     Posts    @relation(fields: [postId], references: [id])
