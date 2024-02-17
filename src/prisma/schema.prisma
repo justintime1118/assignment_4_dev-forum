@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modeling
+
+model Users {
+  id        Int        @id @default(autoincrement())
+  name      String
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  posts     Posts[]
+  comments  Comments[]
+  likes     Likes[]
+}
+
+model Forums {
+  id        Int      @id @default(autoincrement())
+  name      String   @default("unnamed forum")
+  posts     Posts[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Posts {
+  id        Int        @id @default(autoincrement())
+  title     String
+  content   String
+  forum     Forums     @relation(fields: [forumId], references: [id])
+  forumId   Int
+  author    Users      @relation(fields: [authorId], references: [id])
+  authorId  Int
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  comments  Comments[]
+  likes     Likes[]
+}
+
+model Comments {
+  id        Int      @id @default(autoincrement())
+  content   String
+  author    Users    @relation(fields: [authorId], references: [id])
+  authorId  Int
+  posts     Posts    @relation(fields: [postId], references: [id])
+  postId    Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Likes {
+  users   Users    @relation(fields: [userId], references: [id])
+  userId  Int
+  posts   Posts    @relation(fields: [postId], references: [id])
+  postId  Int
+  likedAt DateTime @default(now())
+
+  @@id(name: "likeId", [userId, postId])
+}
