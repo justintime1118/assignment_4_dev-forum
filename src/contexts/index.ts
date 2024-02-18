@@ -10,10 +10,7 @@ export const controllers = Router();
 
 controllers.use("/auth", authController);
 controllers.use("/forums", forumsController);
-controllers.use("/forums/:forumName/posts", postsController);
-controllers.use("/forums/:forumName/posts/:postId/likes", likesController);
-controllers.use(
-  "/forums/:forumName/posts/:postId/comments",
-  commentsController
-);
-controllers.use("/users/:userId/likes", usersController);
+controllers.use("/users", usersController);
+controllers.use("/forums/:forumId/posts", postsController);
+controllers.use("/forums/:forumId/posts/:postId/likes", likesController);
+controllers.use("/forums/:forumId/posts/:postId/comments", commentsController);
