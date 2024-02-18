@@ -12,5 +12,5 @@ controllers.use("/auth", authController);
 controllers.use("/forums", forumsController);
 controllers.use("/users", usersController);
 controllers.use("/forums/:forumId/posts", postsController);
-controllers.use("/forums/:forumId/posts/:postId/likes", likesController);
 controllers.use("/forums/:forumId/posts/:postId/comments", commentsController);
+controllers.use("/forums/:forumId/posts/:postId/likes", likesController);
