@@ -1,8 +1,8 @@
-import { APIResponse } from "../types/type.apiResponse";
+import { APIResponse } from "../types/apiResponse.type";
 
 export function createSuccessResponse(result: any): APIResponse {
   return {
-    success: false,
+    success: true,
     result: result,
     error: null,
   };
