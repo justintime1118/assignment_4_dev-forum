@@ -45,7 +45,7 @@ export default async function authenticator(
       return res.json(response);
     }
 
-    req.user = user;
+    req.user = { id: user.id, email: user.email };
   } catch (e) {
     res.status(401);
     response = createErrorResponse("invalid token");
