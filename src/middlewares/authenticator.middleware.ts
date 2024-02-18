@@ -4,7 +4,12 @@ import { APIResponse } from "../contexts/types/apiResponse.type";
 import usersRepository from "../contexts/users/users.repository";
 import { createErrorResponse } from "../contexts/utils/utils";
 
-const openedRoutes = ["/auth/sign-in", "/auth/sign-up"];
+const openedRoutes = [
+  "/auth/sign-in",
+  "/auth/sign-up",
+  "/forums/each/posts",
+  "/forums/:forumName/posts",
+];
 
 export default async function authenticator(
   req: Request,
