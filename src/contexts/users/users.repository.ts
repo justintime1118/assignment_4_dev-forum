@@ -1,8 +1,8 @@
-import prismaCient from "../../prisma/client.prisma";
+import prismaClient from "../../prisma/client.prisma";
 
 class UsersRepository {
   async insertUser(email: string, encryptedPassword: string) {
-    const newUser = await prismaCient.users.create({
+    const newUser = await prismaClient.users.create({
       data: { email, encryptedPassword },
       select: { id: true, email: true, createdAt: true },
     });
@@ -10,14 +10,14 @@ class UsersRepository {
   }
 
   async findUserByEmail(email: string) {
-    const newUser = await prismaCient.users.findUnique({
+    const newUser = await prismaClient.users.findUnique({
       where: { email: email },
     });
     return newUser;
   }
 
   async findAllUsers() {
-    const users = await prismaCient.users.findMany();
+    const users = await prismaClient.users.findMany();
     return users;
   }
 }
