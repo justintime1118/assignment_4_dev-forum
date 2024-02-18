@@ -20,6 +20,20 @@ class UsersRepository {
     const users = await prismaClient.users.findMany();
     return users;
   }
+
+  async findAllLikedPostsByUserId(userId: number) {
+    const likedPosts = await prismaClient.likes.findMany({
+      where: {
+        userId: userId,
+      },
+      select: {
+        posts: {},
+      },
+    });
+
+    console.log(likedPosts);
+    return likedPosts;
+  }
 }
 
 const usersRepository = new UsersRepository();
