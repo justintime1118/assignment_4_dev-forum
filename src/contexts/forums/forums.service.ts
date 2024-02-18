@@ -16,6 +16,20 @@ class ForumsService {
     }
     res.json(response);
   }
+
+  async getPostsFromEachForumByPage(req: Request, res: Response) {
+    const page = Number(req.query.page);
+
+    let response: APIResponse;
+    try {
+      const posts = await forumsRepository.findPostsFromEachForumByPage(page);
+      response = createSuccessResponse(posts);
+    } catch (e) {
+      res.status(500);
+      response = createErrorResponse(PRISMA_ERROR);
+    }
+    res.json(response);
+  }
 }
 
 const forumsService = new ForumsService();
