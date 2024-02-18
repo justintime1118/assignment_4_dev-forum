@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { PRISMA_ERROR } from "../../messages/error.messages";
 import { APIResponse } from "../types/apiResponse.type";
 import { createErrorResponse, createSuccessResponse } from "../utils/utils";
 import forumsRepository from "./forums.repository";
@@ -11,7 +12,7 @@ class ForumsService {
       response = createSuccessResponse(forums);
     } catch (e) {
       res.status(500);
-      response = createErrorResponse("Prisma error");
+      response = createErrorResponse(PRISMA_ERROR);
     }
     res.json(response);
   }

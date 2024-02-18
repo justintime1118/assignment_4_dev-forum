@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { PRISMA_ERROR } from "../../messages/error.messages";
 import { APIResponse } from "../types/apiResponse.type";
 import usersRepository from "../users/users.repository";
 import { createErrorResponse, createSuccessResponse } from "../utils/utils";
@@ -26,7 +27,7 @@ class AuthService {
     } catch (e) {
       console.log(e);
       res.status(500);
-      response = createErrorResponse("Prisma error");
+      response = createErrorResponse(PRISMA_ERROR);
     }
     res.json(response);
   }
@@ -62,7 +63,7 @@ class AuthService {
       response = createSuccessResponse(accessToken);
       res.json(response);
     } catch (e) {
-      response = createErrorResponse("Prisma error");
+      response = createErrorResponse(PRISMA_ERROR);
       res.status(500);
       return res.json(response);
     }
