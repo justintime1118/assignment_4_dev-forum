@@ -7,8 +7,8 @@ import { createErrorResponse } from "../contexts/utils/utils";
 const openedRoutes = [
   "/auth/sign-in",
   "/auth/sign-up",
-  "/forums/each/posts",
-  "/forums/:forumName/posts",
+  "/forums/posts",
+  "/forums/:forumId/posts",
 ];
 
 export default async function authenticator(
