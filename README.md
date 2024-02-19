@@ -40,4 +40,4 @@
 3. 그 외
    - 장기적인 유지보수 용이성을 위한 _`적절한 코드 분리`_, _`구조화`_, _`명시적이고 가독성 높은 변수명`_ 필수
    - RESTful API
-   - Postman을 사용한 API 문서(https://web.postman.co/documentation/21303610-37aae4c6-1cec-4eae-b7dd-d65e37cee67b/publish?workspaceId=0551ae93-0cca-4e23-87ee-ccc19d397c8d)
+   - Postman을 사용한 API 문서(https://documenter.getpostman.com/view/21303610/2sA2r82PPk)
